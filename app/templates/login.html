@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %} Login {% endblock %}
+{% block content %}
+    <section>
+        <div class="container">
+            <form action="" method="post" nonvalidate>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+                    <label for="email">Email</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="171">
+                    <label for="password">Password</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="submit" class="form-control btn btn-primary" id="submit" name="submit" value="Registrar">
+                </div>
+            </form>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <p>No tienes cuenta?
+                <a href="{{url_for('signup')}}">Reg&iacute;strate</a>
+            </p>
+            <p>
+                <a href="{{url_for('signup')}}">Olvidaste el password??</a>
+            </p>
+
+        </div>
+    </section>
+
+{% endblock %}

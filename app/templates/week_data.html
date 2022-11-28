@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %} Datos {% endblock %}
+{% block content %}
+    <section>
+        <div class="container">
+            <form action="" method="post" nonvalidate>
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="neck" name="neck" placeholder="31">
+                    <label for="neck">Cuello(cm)</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="weight" name="weight" placeholder="80">
+                    <label for="weight">Peso(Kg)</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="waist" name="waist" placeholder="80">
+                    <label for="waist">Cintura(cm)</label>
+                </div>
+                
+                <div class="form-floating mb-3">
+                    <input type="submit" class="form-control btn btn-primary" id="submit" name="submit" value="Registrar">
+                    
+                </div>
+            </form>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <a href="{{ url_for('index')}}" class="btn btn-primary">Regresar</a>
+        </div>
+    </section>
+
+{% endblock %}

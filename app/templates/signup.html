@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %} Signup {% endblock %}
+
+{% block content %}
+    <h1>Registrate</h1>
+    <section>
+        <div class="container">
+            <form action="" method="post" nonvalidate>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+                    <label for="email">Email</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Esteban">
+                    <label for="email">Nombre</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="date" class="form-control" id="birth" name="birth" placeholder="22/01/1994">
+                    <label for="birth">Fecha de nacimiento</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="height" name="height" placeholder="171">
+                    <label for="height">Altura(cm)</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="********">
+                    <label for="password">Password</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password2" class="form-control" id="password2" name="password2" placeholder="*******">
+                    <label for="password2">Confirmar Password</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="submit" class="form-control btn btn-primary" id="submit" name="submit" value="Registrar">
+                </div>
+
+            </form>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <p>Ya tienes cuenta?
+                <a href="{{url_for('login')}}">Inicia sesi&oacute;n</a>
+            </p>
+        </div>
+    </section>
+
+{% endblock %}
