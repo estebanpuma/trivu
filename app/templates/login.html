@@ -4,16 +4,23 @@
     <section>
         <div class="container">
             <form action="" method="post" nonvalidate>
+                {{ form.hidden_tag() }}
                 <div class="form-floating mb-3">
                     <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
                     <label for="email">Email</label>
                 </div>
+                {% for error in form.email.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
                 <div class="form-floating mb-3">
                     <input type="password" class="form-control" id="password" name="password" placeholder="171">
                     <label for="password">Password</label>
+                    {% for error in form.password.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="submit" class="form-control btn btn-primary" id="submit" name="submit" value="Registrar">
+                    <input type="submit" class="form-control btn btn-primary" id="submit" name="submit" value="Login">
                 </div>
             </form>
         </div>
@@ -24,7 +31,7 @@
                 <a href="{{url_for('signup')}}">Reg&iacute;strate</a>
             </p>
             <p>
-                <a href="{{url_for('signup')}}">Olvidaste el password??</a>
+                <a href="">Olvidaste el password??</a>
             </p>
 
         </div>

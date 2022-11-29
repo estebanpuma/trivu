@@ -6,12 +6,24 @@
     <h1>THis is the index</h1>
 
     <div class="container">
-        <a href="{{url_for('signup')}}" class="btn btn-primary">
-            Sign up
-        </a>
+        
         <a href="{{url_for('week_data')}}" class="btn btn-primary">
             Registrar datos
         </a>
+        {% if current_user.is_anonymous %}
+        <a href="{{url_for('signup')}}" class="btn btn-primary">
+            Sign up
+        </a>
+
+        <a href="{{url_for('login')}}" class="btn btn-primary">
+            Login
+        </a>
+        {% else %}
+        <a href="{{url_for('logout')}}" class="btn btn-primary">
+            Logout
+        </a>
+
+        {% endif %}
     </div>
     
 

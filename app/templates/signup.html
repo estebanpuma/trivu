@@ -7,33 +7,69 @@
     <section>
         <div class="container">
             <form action="" method="post" nonvalidate>
+                {{ form.hidden_tag() }}
                 <div class="form-floating mb-3">
                     <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
                     <label for="email">Email</label>
                 </div>
+                <div class="container">
+                    {% for error in form.email.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="username" name="username" placeholder="Esteban">
-                    <label for="email">Nombre</label>
+                    <label for="username">Nombre</label>
                 </div>
+                <div class="container">
+                    {% for error in form.username.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+
                 <div class="form-floating mb-3">
                     <input type="date" class="form-control" id="birth" name="birth" placeholder="22/01/1994">
                     <label for="birth">Fecha de nacimiento</label>
                 </div>
+                <div class="container">
+                    {% for error in form.birth.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="height" name="height" placeholder="171">
                     <label for="height">Altura(cm)</label>
                 </div>
+                <div class="container">
+                    {% for error in form.height.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+
                 <div class="form-floating mb-3">
                     <input type="password" class="form-control" id="password" name="password" placeholder="********">
                     <label for="password">Password</label>
                 </div>
-                <div class="form-floating mb-3">
-                    <input type="password2" class="form-control" id="password2" name="password2" placeholder="*******">
-                    <label for="password2">Confirmar Password</label>
+                <div class="container">
+                    {% for error in form.password.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
                 </div>
 
                 <div class="form-floating mb-3">
-                    <input type="submit" class="form-control btn btn-primary" id="submit" name="submit" value="Registrar">
+                    <input type="password" class="form-control" id="password2" name="password2" placeholder="*******">
+                    <label for="password2">Confirmar Password</label>
+                </div>
+                <div class="container">
+                    {% for error in form.password2.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="submit" class="form-control btn btn-primary" id="submit" name="submit" placeholder="Registrar">
                 </div>
 
             </form>
