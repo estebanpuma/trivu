@@ -3,13 +3,14 @@
 {% block title %}Home{% endblock %}
 
 {% block content %} 
+    <header>
+        {% include '_navbar.html' %}
+    </header>
     <h1>THis is the index</h1>
 
     <div class="container">
         
-        <a href="{{url_for('week_data')}}" class="btn btn-primary">
-            Registrar datos
-        </a>
+        
         {% if current_user.is_anonymous %}
         <a href="{{url_for('signup')}}" class="btn btn-primary">
             Sign up
@@ -19,12 +20,19 @@
             Login
         </a>
         {% else %}
+        <a href="{{url_for('profile', email=current_user.email)}}" class="btn btn-primary">
+            Perfil
+        </a>
         <a href="{{url_for('logout')}}" class="btn btn-primary">
             Logout
         </a>
 
         {% endif %}
     </div>
+
+    <footer>
+        {% include '_footer.html' %}
+    </footer>
     
 
 {% endblock %}

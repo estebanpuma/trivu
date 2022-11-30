@@ -1,6 +1,23 @@
-{% extend 'base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
-
+<table>
+    <tr valign="top">
+        <td><img src="{{ user.avatar(128) }}"></td>
+        <td><h1> {{ user.username }}</h1></td>
+    </tr>
+</table>
+<hr>
+{% for data in week_data %}
+    <p>
+       Semana 1 {{data.user.username}} pesa: <b>{{ data.weight}} </b> 
+    </p>
+{% endfor %}
+<div>
+    <a href="{{url_for('week_data')}}" class="btn btn-primary">
+        Registrar datos
+    </a>
+</div>
+    
 
 {% endblock %}
