@@ -39,7 +39,7 @@ def signup():
         return redirect(url_for('index'))
     form = SignupForm()
     if form.validate_on_submit():
-        user = User(username=form.username.data, email=form.email.data)
+        user = User(username=form.username.data, email=form.email.data, height=form.height.data, birth=form.birth.data)
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
@@ -52,16 +52,28 @@ def signup():
 @login_required
 def profile(email):
     user = User.query.filter_by(email=email).first_or_404()
-    week_data = [
-        {'user': user, 'weight': 83},
-        {'user': user, 'weight': 84}
-    ]
-    return render_template('profile.html', user=user, week_data=week_data)
 
-@app.route('/week_data')
+    w_data = WeekData.query.filter_by(user_id=user.id).order_by(WeekData.id.desc()).first()
+
+
+    return render_template('profile.html', user=user, w_data=w_data)
+
+@app.route('/week_data', methods=['GET', 'POST'])
 @login_required
 def week_data():
-    return render_template('week_data.html')
+   
+    form = WeekDataForm()
+    if form.validate_on_submit():
+        flash('Hasta qui bien ususario: {}'.format(current_user.id))
+        w_data = WeekData(neck=form.neck.data, waist=form.waist.data, weight=form.weight.data, user_id=current_user.id)
+        w_data.calc_body_fat()
+        db.session.add(w_data)
+        db.session.commit()
+        return redirect(url_for('index'))
+    flash(form.weight.data)
+    return render_template('week_data.html', form=form)
+
+    #return render_template('week_data.html', form=form)
 
 
 @app.route('/logout')

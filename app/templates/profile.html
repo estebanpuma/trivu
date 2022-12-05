@@ -8,11 +8,9 @@
     </tr>
 </table>
 <hr>
-{% for data in week_data %}
-    <p>
-       Semana 1 {{data.user.username}} pesa: <b>{{ data.weight}} </b> 
-    </p>
-{% endfor %}
+<p>
+   Peso: {{ w_data.weight}}  Grasa corporal: {{ w_data.body_fat }}
+</p>
 <div>
     <a href="{{url_for('week_data')}}" class="btn btn-primary">
         Registrar datos

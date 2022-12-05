@@ -3,6 +3,7 @@ from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from hashlib import md5
+import math as ma
 
 
 class User(UserMixin, db.Model):
@@ -38,7 +39,9 @@ class WeekData(db.Model):
     def __repr__(self):
         return 'Peso: {} Grasa corporal: {}'.format(self.weight, self.body_fat)
 
-
+    def calc_body_fat(self):
+        user = User.query.filter_by(id=self.user_id).first()
+        self.body_fat = 86.01*ma.log10((self.waist/2.54)-(self.neck/2.54))-70.041*ma.log10(user.height/2.54)+36.76
 
 @login.user_loader
 def load_user(id):
