@@ -64,7 +64,6 @@ def week_data():
    
     form = WeekDataForm()
     if form.validate_on_submit():
-        flash('Hasta qui bien ususario: {}'.format(current_user.id))
         w_data = WeekData(neck=form.neck.data, waist=form.waist.data, weight=form.weight.data, user_id=current_user.id)
         w_data.calc_body_fat()
         db.session.add(w_data)
@@ -74,6 +73,11 @@ def week_data():
     return render_template('week_data.html', form=form)
 
     #return render_template('week_data.html', form=form)
+
+
+@app.route('/diet')
+def diet():
+    return render_template('diet.html')
 
 
 @app.route('/logout')

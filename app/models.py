@@ -34,7 +34,10 @@ class WeekData(db.Model):
     neck = db.Column(db.Float)
     waist = db.Column(db.Float)
     body_fat = db.Column(db.Float)
+    lbm = db.Column(db.Float)
+    bmr = db.Column(db.Float)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    
 
     def __repr__(self):
         return 'Peso: {} Grasa corporal: {}'.format(self.weight, self.body_fat)
@@ -42,6 +45,10 @@ class WeekData(db.Model):
     def calc_body_fat(self):
         user = User.query.filter_by(id=self.user_id).first()
         self.body_fat = 86.01*ma.log10((self.waist/2.54)-(self.neck/2.54))-70.041*ma.log10(user.height/2.54)+36.76
+
+    def calc_lbm(self):
+        self.lbm = self.weight*(self.body_fat/100)
+
 
 @login.user_loader
 def load_user(id):

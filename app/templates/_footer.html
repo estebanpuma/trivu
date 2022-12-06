@@ -1,7 +1,7 @@
 <footer class="footer">
     <ul class="navbar-footer">
         <li>
-            <a href="">
+            <a href="{{url_for('index')}}">
                 <div class="icon-container">
                     <img class="icons"  src="../static/icons/home.png" alt="Inicio">
                     <p>Inicio</p>
@@ -9,7 +9,7 @@
             </a>
         </li>
         <li>
-            <a href="">
+            <a href="{{url_for('week_data')}}">
                 <div class="icon-container">
                     <img class="icons"  src="../static/icons/controlb.png" alt="control">
                     <p>Control</p>
@@ -25,7 +25,7 @@
             </a>
         </li>
         <li>
-            <a href="">
+            <a href="{{url_for('diet')}}">
                 <div class="icon-container">
                     <img class="icons"  src="../static/icons/diet.png" alt="Inicio">
                     <p>Dieta</p>
@@ -33,7 +33,7 @@
             </a>
         </li>
         <li>
-            <a href="">
+            <a href="{{url_for('profile', email=current_user.email)}}">
                 <div class="icon-container">
                     <img class="icons"  src="../static/icons/user.png" alt="Usuario">
                     <p>Perfil</p>
